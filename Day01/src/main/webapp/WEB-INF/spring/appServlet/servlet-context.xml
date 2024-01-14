@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<!-- Spring MVC에서 사용하는 어노테이션들을 활성화 한다 -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- 정적 자원(CSS, JS, image...)에 대한 요청을 처리하기 위한 경로 맵핑, mapping속성으로 접근하면location에서 대상 파일을 찾는다 -->
+	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/artist_img/**" location="file:e:/artist_img/" />
+	
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!-- 컨트롤러가 반환하는 값에서 문자열 형태의 viewName을 가져와서, 접두사/접미사 처리 이후 forward하는 규칙 설정 -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<!-- 
+		개별 클래스를 <bean> 태그로 등록하는 대신, 특정 패키지 내부의 특정 어노테이션이 명시된 클래스를 일광적으로 스캔하여
+		한번에 스프링 빈으로 등록한다
+		@Controller, @service, @Repository, @Component, @ControllerAdive, @RestController 등
+		자동으로 생성되는 스피링빈의 ID는 클래스 이름의 첫글자만 소문자로 변환하여 사용한다
+		public class HomeController -> <bean id="homeController" class="..." />
+	 -->
+	<context:component-scan base-package="com.itbank.controller" />
+	
+	
+	
+	
+</beans:beans>
