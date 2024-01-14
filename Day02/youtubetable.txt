@@ -1,0 +1,23 @@
+select * from tab;
+
+drop table youtube purge;
+drop table youtube_seq purge;
+
+create sequence youtube_seq
+    start with 1
+    maxvalue 99999
+    increment by 1
+    nocycle
+    nocache;
+    
+create table youtube(
+    idx         number        default youtube_seq.nextval primary key,
+    title       varchar2(200) not null,
+    channel     varchar2(200) not null,
+    viewCount   number        default 0,
+    thumbnail   varchar2(500) not null,
+    movieTag    varchar2(1000)not null
+);
+
+select * from youtube;
+commit;

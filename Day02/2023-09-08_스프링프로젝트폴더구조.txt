@@ -1,0 +1,54 @@
+[project]
+|   pom.xml
+|
++---src
+|   +---main
+|   |   +---java	[구성 요소 중 자바 형식 파일을 배치]
+|   |   |   \---com
+|   |   |       \---itbank
+|   |   |           +---controller
+|   |   |           |       Ex01Controller.java
+|   |   |           |       Ex02Controller.java
+|   |   |           |       Ex03Controller.java
+|   |   |           |       HomeController.java
+|   |   |           |
+|   |   |           +---model
+|   |   |           |       ArtistDTO.java
+|   |   |           |       Ex02DTO.java
+|   |   |           |
+|   |   |           \---repository
+|   |   |                   Ex03DAO.java
+|   |   |                   TestDAO.java
+|   |   |
+|   |   +---resources	[구성 요소 중 자바가 아닌 파일을 배치]
+|   |   |   |   log4j.xml
+|   |   |   |
+|   |   |   \---META-INF
+|   |   \---webapp	[웹 응답에 필요한 파일을 배치(WebContent)]
+|   |       +---resources	[웹 정적 파일 배치]
+|   |       |       aespa.jpg
+|   |       |       default.jpg
+|   |       |       방탄소년단.jpg
+|   |       |       아라아나그란데.jpg
+|   |       |       악뮤.jpg
+|   |       |       윤종신.jpeg
+|   |       |       윤종신1.jpeg
+|   |       |
+|   |       \---WEB-INF		[내부 참조용 설정 폴더]
+|   |           |   web.xml	[웹 프로젝트 설정[
+|   |           |
+|   |           +---classes
+|   |           +---spring
+|   |           |   |   root-context.xml [공용 스프링 빈 설정]
+|   |           |   |
+|   |           |   \---appServlet
+|   |           |           servlet-context.xml [서블릿 스프링 빈 설정]
+|   |           |
+|   |           \---views	[화면을 보여주는 jsp]
+|   |                   ex01-action.jsp
+|   |                   ex01.jsp
+|   |                   ex02-action.jsp
+|   |                   ex02.jsp
+|   |                   ex03.jsp
+|   |                   home.jsp
+

@@ -1,0 +1,10 @@
+[Project 설정 순서]
+pom.xml	 =>	web.xsml	=>	root-context.xml	=>	servlet-context.xml
+				copy & paste		topLebelPackagerRename
+java-version
+spring-version
+sourcetarget
+dependency	copy& paste
+
+HomeController.java -> home.jsp
+=======================================================================
