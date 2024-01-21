@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"//mybatis.org//DTO Mapper 3.0 //EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<!-- mapper의 namespace는 연결할 dao 인터페이스의 풀네임을 작성한다 -->
+<mapper namespace="com.itbank.repository.MemberDAO">
+
+	<!-- select, update, insert, delete의 id는 인터페이스 내부 함수이름을 지정한다 -->
+	<!-- parameterType 속성은 매개변수의 자료형을 작성한다 -->
+	<!-- resultType 속성은 반환자료형을 작성한다 -->
+	<!-- 단, insert, update, delete는 반환형이 int로 고정이기 때문에, 별도로 작성하지 않는다 -->
+	<insert id="insertMember" parameterType="com.itbank.model.MemberDTO">
+		insert into member2 (userid, userpw, username, email, salt)
+			values
+				(#{userid},#{userpw},#{username},#{email},#{salt})	
+	</insert>
+	
+	<select id="selectAll" resultType="member">
+		select * from member2 order by idx
+	</select>
+
+	
+</mapper>
