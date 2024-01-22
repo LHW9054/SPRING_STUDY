@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"//mybatis.org//DTO Mapper 3.0 //EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<!-- mapper의 namespace는 연결할 dao 인터페이스의 풀네임을 작성한다 -->
+<mapper namespace="com.itbank.repository.BoardDAO">
+
+	<!-- select, update, insert, delete의 id는 인터페이스 내부 함수이름을 지정한다 -->
+	<!-- parameterType 속성은 매개변수의 자료형을 작성한다 -->
+	<!-- resultType 속성은 반환자료형을 작성한다 -->
+	<!-- 단, insert, update, delete는 반환형이 int로 고정이기 때문에, 별도로 작성하지 않는다 -->
+
+	<insert id="insertBoard" parameterType="board">
+		insert into board4
+			(
+				title, 
+				member2_idx, 
+				<if test="fileName != null">fileName,</if> 
+				content
+			)
+		values
+			(
+				#{title},
+				#{member2_idx},
+				<if test="fileName != null">#{fileName},</if>
+				#{content}
+			)
+	</insert>
+	
+	
+	
+	
+	<select id="selectMaxIdx" resultType="int">
+		select max(idx) from board4
+	</select>
+	
+	<select id="selectAll" resultType="board">
+		select
+		    B.idx,
+		    B.title,
+		    M.username as member2_username,
+		    B.fileName,
+		    B.viewCount,
+		    B.wdate
+		        from board4 B
+		        join member2 M
+		            on b.member2_idx = M.idx
+		        order by idx desc
+	</select>
+	
+	<select id="selectOne" parameterType="int" resultType="board">
+		select
+		    B.idx,
+		    B.title,
+		    M.username as member2_username,
+		    M.userid as member2_userid,
+		    B.content,
+		    B.fileName,
+		    B.viewCount,
+		    B.wdate
+		        from board4 B
+		        join member2 M
+		            on b.member2_idx = M.idx
+		        where
+		        	B.idx = #{idx}
+	</select>
+	
+	<select id="selectFileName" resultType="String" parameterType="int">
+		select fileName from board4 where idx = #{idx}
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete board4 where idx = #{idx}
+	</delete>
+	
+</mapper>
