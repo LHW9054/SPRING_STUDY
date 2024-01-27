@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"-//mybatis.org//DTD Mapper 3.0//EN" 
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itbank.repository.MemberDAO">
+
+	
+	<insert id="join" parameterType="member">
+		insert into member7	values (#{userid}, #{userpw}, #{username}, #{email}, #{birth})
+	</insert>
+
+	<select id="login" resultType="member">
+		select * from member7 where (userid)
+	</select>
+	
+	
+	
+</mapper>
+
+
+
